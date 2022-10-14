@@ -20,6 +20,15 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
+## Users
+Officers:  
+- jerrypearson, 123
+- larrymorgan, qwerty
+
+Admins:  
+- mateo, makememateo
+
+
 ## Test
 
 ```bash
