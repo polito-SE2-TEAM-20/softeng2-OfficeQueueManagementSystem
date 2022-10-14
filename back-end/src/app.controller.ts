@@ -1,12 +1,14 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { DataSource } from 'typeorm';
+
+import { Service } from './entities';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private dataSource: DataSource) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Get('/services')
+  async getServices(): Promise<any[]> {
+    return await this.dataSource.getRepository(Service).findBy({});
   }
 }
