@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import MSNewTicket from './main_screen/MSNewTicket';
+import Container from 'react-bootstrap/esm/Container';
+import Row from 'react-bootstrap/esm/Row';
+import Col from 'react-bootstrap/esm/Col';
+import TimeAndDate from './main_screen/TimeAndDate'
+import QueueHistory from './main_screen/QueueHistory';
+import OQMS from './main_screen/OQMS';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container fluid>
+      <Row>
+        <OQMS />
+      </Row>
+      <Row style={{minHeight: "100vh"}}>
+        <Col className='col-8' style={{ backgroundColor: "#31A861" }}>
+          <MSNewTicket />
+        </Col>
+        <Col className='col-4' style={{ backgroundColor: "#414141" }}>
+          <QueueHistory />
+        </Col>
+      </Row>
+      <TimeAndDate />
+    </Container>
+    
+
   );
 }
 
