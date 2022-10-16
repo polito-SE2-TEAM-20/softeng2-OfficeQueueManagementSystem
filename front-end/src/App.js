@@ -1,16 +1,17 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
-import MSNewTicket from './main_screen/MSNewTicket';
+import MSNewTicket from './main-screen/MSNewTicket';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
-import TimeAndDate from './main_screen/TimeAndDate'
-import QueueHistory from './main_screen/QueueHistory';
-import OQMS from './main_screen/OQMS';
+import TimeAndDate from './main-screen/TimeAndDate'
+import QueueHistory from './main-screen/QueueHistory';
+import OQMS from './main-screen/OQMS';
+import ClientStand from './client-stand/ClientStand';
 
 function App() {
   return (
-    <Container fluid>
+      <Container fluid>
       <Row>
         <OQMS />
       </Row>
@@ -24,8 +25,6 @@ function App() {
       </Row>
       <TimeAndDate />
     </Container>
-    
-
   );
 }
 
