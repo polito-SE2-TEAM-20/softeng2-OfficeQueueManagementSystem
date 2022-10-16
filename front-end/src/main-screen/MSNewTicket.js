@@ -8,13 +8,13 @@ const MSNewTicket = (props) => {
             <Container>
                 <Row>
                     <Col>
-                        <div class="sectionTitle header" style={{ marginTop: "100px" }}>Last called ticket</div>
+                        <div class="sectionTitleLeft header" style={{ marginTop: "100px" }}>Last called ticket</div>
                     </Col>
                 </Row>
             </Container>
             <div class="newTicketBox center">
                 <div class="newTicketText">
-                    A074
+                    A014
                 </div>
                 <div style={{ color: "#ffffff" }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
@@ -22,7 +22,7 @@ const MSNewTicket = (props) => {
                     </svg>
                 </div>
                 <div class="newTicketText">
-                    Counter 7 (C#7)
+                    Counter 1 (C#1)
                 </div>
             </div>
         </>

@@ -65,7 +65,7 @@ export const getMonthName = (m) => {
  * @param {int} minutes minutes but without extension
  * @returns the correct representation of minutes on clocks
  */
-export const extendMinutes = (minutes) => {
+export const extendTime = (minutes) => {
     if(minutes < 10)
     {
         return minutes = "0" + minutes;

@@ -31,20 +31,40 @@
     padding-top: 0px;
 }
 
-.sectionTitle {
+.sectionTitleLeft {
     font-size: 60px;
     font-weight: bold;
     background-color: #0F5EA8;
-    border-top-left-radius: 0px;
+    border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     margin-top: 15px;
     margin-left: 15px;
-    padding-left: 50px;
     color: #ffffff;
     font-family: Koblenz;
     inline-size: 600px;
+    text-align: center;
+    margin: 0;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.sectionTitleRight {
+    font-size: 60px;
+    font-weight: bold;
+    background-color: #0F5EA8;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    margin-top: 15px;
+    margin-left: 15px;
+    color: #ffffff;
+    font-family: Koblenz;
+    inline-size: 600px;
+    text-align: center;
 }
 
 .newTicketBox {
@@ -54,7 +74,7 @@
     padding-right: 25px;
     padding-top: 25px;
     padding-bottom: 25px;
-    border-top-left-radius: 0px;
+    border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
@@ -74,8 +94,8 @@
 
 .leftQueueItem {
     background-color: #228FF5;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
     font-family: Akira;
     font-size: 50px;
     color: white;
@@ -84,8 +104,8 @@
 
 .rightQueueItem {
     background-color: #0F5EA8;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
     font-family: Akira;
     font-size: 50px;
     color: white;
@@ -97,7 +117,7 @@
 .center {
     margin: 0;
     position: relative;
-    top: 50%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -108,4 +128,26 @@
     background-color: #3BF585;
     color: #414141;
     font-family: Akira;
+}
+
+.leftQueueHeader {
+    background-color: #0d3153;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-family: Akira;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+}
+
+.rightQueueHeader {
+    background-color: #031627;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-family: Akira;
+    font-size: 25px;
+    color: white;
+    text-align: center;
+    border-left: #703516;
+    border-left-style: solid;
 }

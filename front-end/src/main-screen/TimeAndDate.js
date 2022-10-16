@@ -1,6 +1,6 @@
 import './style/style.css';
 import React, { useState, useEffect } from 'react';
-import { getSuffix, getDayOfTheWeek, getMonthName, extendMinutes } from './GenericFunctions';
+import { getSuffix, getDayOfTheWeek, getMonthName, extendTime } from './GenericFunctions';
 import Col from 'react-bootstrap/esm/Col';
 
 const TimeAndDate = (props) => {
@@ -17,8 +17,8 @@ const TimeAndDate = (props) => {
     let day = getDayOfTheWeek(dateState.getDay());
     let mm = getMonthName(dateState.getMonth());
     let yy = dateState.getFullYear();
-    let hour = dateState.getHours();
-    let minutes = extendMinutes(dateState.getMinutes());
+    let hour = extendTime(dateState.getHours());
+    let minutes = extendTime(dateState.getMinutes());
     let suffix = getSuffix(dateState.getDate());
 
 
