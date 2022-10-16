@@ -8,7 +8,7 @@ const MSNewTicket = (props) => {
             <Container>
                 <Row>
                     <Col>
-                        <div class="sectionTitleLeft header" style={{ marginTop: "100px" }}>Last called ticket</div>
+                        <div class="sectionTitleLeft header" style={{ marginTop: "140px" }}>Last called ticket</div>
                     </Col>
                 </Row>
             </Container>
