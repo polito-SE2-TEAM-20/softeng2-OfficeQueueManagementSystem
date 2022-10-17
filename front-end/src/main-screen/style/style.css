@@ -140,6 +140,11 @@
     text-align: center;
 }
 
+.transparencyAnimation {
+    animation-name: disappearingQI;
+    animation-duration: 2s;
+}
+
 .rightQueueHeader {
     background-color: #031627;
     border-top-right-radius: 20px;
@@ -150,4 +155,26 @@
     text-align: center;
     border-left: #703516;
     border-left-style: solid;
+}
+
+@keyframes disappearingQI {
+    0% {
+        opacity: 100%;
+    }
+
+    25% {
+        opacity: 50%;
+    }
+
+    50% {
+        opacity: 0%;
+    }
+
+    75% {
+        opacity: 50%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
 }

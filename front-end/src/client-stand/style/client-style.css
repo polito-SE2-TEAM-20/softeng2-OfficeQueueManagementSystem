@@ -21,3 +21,11 @@
     padding-top: 0px;
     color: #414141;
 }
+
+.hoverButton {
+    transition: all 0.15s ease-in;
+}
+
+.hoverButton:hover {
+    background-color: #228FF5;
+}

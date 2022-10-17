@@ -1,8 +1,21 @@
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import { useState, useEffect } from 'react'
 
 const MSNewTicket = (props) => {
+    const [s, setS] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setS(true)
+
+            setTimeout(() => {
+                setS(false)
+            }, 2*1000)
+        }, 1000*3)
+    }, []);
+
     return (
         <>
             <Container>
@@ -12,7 +25,7 @@ const MSNewTicket = (props) => {
                     </Col>
                 </Row>
             </Container>
-            <div class="newTicketBox center">
+            <div class={`newTicketBox center ${s?"transparencyAnimation":""}`}>
                 <div class="newTicketText">
                     A014
                 </div>
