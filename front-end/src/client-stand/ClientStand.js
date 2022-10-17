@@ -36,7 +36,7 @@ const ClientStand = () => {
                         </svg>
                     </Row>
                     <Row>
-                        Service Name
+                        <div style={{textAlign: "center"}}>Service Name</div>
                     </Row>
                 </Col>
                 <Col className="button hoverButton" onClick={() => {onClickWrapper(1); soundPlayClass.SoundPlay(audioClip.sound)}}>
@@ -49,7 +49,7 @@ const ClientStand = () => {
                         </svg>
                     </Row>
                     <Row>
-                        Service Name
+                        <div style={{textAlign: "center"}}>Service Name</div>
                     </Row>
                 </Col>
                 <Col className="button hoverButton" onClick={() => {onClickWrapper(2); soundPlayClass.SoundPlay(audioClip.sound)}}>
@@ -60,7 +60,7 @@ const ClientStand = () => {
                         </svg>
                     </Row>
                     <Row>
-                        Service Name
+                        <div style={{textAlign: "center"}}>Service Name</div>
                     </Row>
                 </Col>
             </Row>
@@ -72,7 +72,7 @@ const ClientStand = () => {
                         </svg>
                     </Row>
                     <Row>
-                        Service Name
+                        <div style={{textAlign: "center"}}>Service Name</div>
                     </Row>
                 </Col>
                 <Col className="button hoverButton" onClick={() => {onClickWrapper(4); soundPlayClass.SoundPlay(audioClip.sound)}}>
@@ -82,7 +82,7 @@ const ClientStand = () => {
                         </svg>
                     </Row>
                     <Row>
-                        Service Name
+                        <div style={{textAlign: "center"}}>Service Name</div>
                     </Row>
                 </Col>
                 <Col className="button hoverButton" onClick={() => {onClickWrapper(5); soundPlayClass.SoundPlay(audioClip.sound)}}>
@@ -92,7 +92,7 @@ const ClientStand = () => {
                         </svg>
                     </Row>
                     <Row>
-                        Service Name
+                        <div style={{textAlign: "center"}}>Service Name</div>
                     </Row>
                 </Col>
             </Row>
