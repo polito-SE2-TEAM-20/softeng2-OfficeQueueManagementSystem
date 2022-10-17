@@ -1,0 +1,23 @@
+.button {
+    background-color: #0F5EA8;
+    text-align: center;
+    margin: 25px;
+    border-radius: 25px;
+    padding: 50px;
+    font-family: Akira;
+    color: #ffffff;
+    font-size: 35px;
+}
+
+.headerClient {
+    background-color: #3BF585;
+    margin-bottom: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+    color: #414141;
+}
