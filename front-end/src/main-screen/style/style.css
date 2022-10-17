@@ -85,7 +85,7 @@
 
 .newTicketText {
     color: #ffffff;
-    font-size: 80px;
+    font-size: 60px;
 }
 
 .queueItem {
@@ -97,7 +97,7 @@
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     font-family: Akira;
-    font-size: 50px;
+    font-size: 40px;
     color: white;
     text-align: center;
 }
@@ -107,7 +107,7 @@
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     font-family: Akira;
-    font-size: 50px;
+    font-size: 40px;
     color: white;
     text-align: center;
     border-left: #F5742F;
@@ -117,7 +117,7 @@
 .center {
     margin: 0;
     position: relative;
-    top: 35%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
