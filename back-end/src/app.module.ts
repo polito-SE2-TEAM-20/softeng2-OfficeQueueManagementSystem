@@ -13,7 +13,7 @@ import { ServicesModule } from './service-type/service-type.module';
     TypeOrmModule.forRoot({
       type: 'sqlite',
       entities,
-      database: resolve('./db/office_queue.db'),
+      database: resolve('./office_queue.db'),
       synchronize: false,
     }),
     AuthModule,
