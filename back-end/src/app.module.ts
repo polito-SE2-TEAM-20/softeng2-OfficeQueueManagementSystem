@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AuthModule } from './auth/auth.module';
 import { entities } from './entities';
+import { QueueModule } from './queue/queue.module';
 import { ServicesModule } from './service-type/service-type.module';
 
 @Module({
@@ -17,6 +18,7 @@ import { ServicesModule } from './service-type/service-type.module';
       synchronize: false,
     }),
     AuthModule,
+    QueueModule,
     ServicesModule,
   ],
   controllers: [AppController],

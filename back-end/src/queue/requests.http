@@ -1,0 +1,19 @@
+//This test is used to insert a new ticket with updated
+//counter when a user get a ticket for a specified service
+//in this case service: "A"
+POST http://localhost:3500/queues/newTicket
+content-type: application/json
+
+{
+    "service": "A"
+}
+
+###
+//This test is used to retrieve last ticket 
+//for a specified service, in this case service: "A"
+POST http://localhost:3500/queues/lastTicket
+content-type: application/json
+
+{
+    "service": "A"
+}
