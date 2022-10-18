@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import ClientStand from './client-stand/ClientStand';
+import CounterAssign from './admin-counter-assignment/CounterAssign'
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -16,10 +17,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/mainscreen" element={<MainScreenWrapper/>}>
-        </Route>
-        <Route path="/clientstand" element={<ClientStand />}>
-        </Route>
+        <Route path="/mainscreen" element={<MainScreenWrapper/>} />
+        <Route path="/clientstand" element={<ClientStand />} />
+        <Route path="/counterassign" element={<CounterAssign />} />
       </Routes>
     </Router>
   );
