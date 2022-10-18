@@ -3,9 +3,5 @@ import { DataSource } from 'typeorm';
 
 @Injectable()
 export class MainScreenService {
-
-    constructor(
-        private dataSource :DataSource
-    ){};
-
+  constructor(private dataSource: DataSource) {}
 }
