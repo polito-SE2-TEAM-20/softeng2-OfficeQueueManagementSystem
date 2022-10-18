@@ -9,8 +9,8 @@
 }
 
 .box {
-    background-color: #414141;
-    color: white;
+    background-color: white;
+    color: #414141;
     border-color: white;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -19,6 +19,7 @@
     margin-top: 10px;
     border-radius: 5px;
     width: fit-content;
+    font-weight: bold;
 }
 
 
