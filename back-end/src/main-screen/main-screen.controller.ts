@@ -5,7 +5,7 @@ import { MainScreenService } from './main-screen.service';
 @Controller('main-screen')
 export class MainScreenController {
 
-    constructor(private serviceType: MainScreenService){}
+    constructor(private mainScreen: MainScreenService){}
 
 
 }
