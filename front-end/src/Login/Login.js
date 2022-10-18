@@ -76,13 +76,13 @@ function LoginForm(props) {
 function LoginButton() {
     const navigate = useNavigate();
     return(
-        <Button variant="outline-primary" onClick={()=> navigate('/officer')}>Login</Button>
+        <Button type="button" class="btn btn-primary btn-lg" onClick={()=> navigate('/login')}>Login</Button>
     )
   }
 
 function LogoutButton(props) {
   return(
-    <Button variant="outline-primary" onClick={props.logout}>Logout</Button>
+    <Button type="button" class="btn btn-primary btn-lg" onClick={props.logout}>Logout</Button>
   )
 }
 

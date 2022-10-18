@@ -2,9 +2,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import ClientStand from './client-stand/ClientStand';
 import { LoginForm } from './Login/Login';
+import { NotFoundLayout } from './Layouts/PageLayout';
 import API from './API';
-import Officerpage from './OfficerPage/officerpage';
-import Administratorpage from './AdministratorPage/administratorpage';
+import Officerpage from './Management/OfficerPage/officerpage';
+import Ticket from './ticket/ticket';
+import Administratorpage from './Management/AdministratorPage/administratorpage';
+import Managementpage from './Management/managementpage';
 import {useState } from 'react';
 import CounterAssign from './admin-counter-assignment/CounterAssign'
 import React from "react";
@@ -59,7 +62,7 @@ function App2() {
         setUser({});
         console.log(user);
         console.log(localStorage);
-        navigate('/');
+        navigate('/management');
       }
 
   return (
@@ -71,6 +74,9 @@ function App2() {
         <Route path = "/login" element={<LoginForm login={doLogIn} user={user} logout={doLogOut}/>}></Route>
         <Route path = '/officer' element = {<Officerpage user={user}  logout={doLogOut}/>}/>
         <Route path = '/administrator' element = {<Administratorpage user={user}  logout={doLogOut}/>}/>
+        <Route path = '/management' element = {<Managementpage />}/>
+        <Route path = '/ticket' element = {<Ticket />}/>
+        <Route path="*" element={<NotFoundLayout />} />
       </Routes>
       </>
   );
