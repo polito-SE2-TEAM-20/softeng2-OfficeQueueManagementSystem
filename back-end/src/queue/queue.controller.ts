@@ -20,11 +20,44 @@ export class QueueController {
     }
  }
 
+ @Post('nextInTheQueue')
+ async getNextInTheQueue(@Body() body: any) {
+    //The body should contain the counter which is going to accept the client
+    //in order to retrieve all the services queues
+    return {
+        nextInTheQueue: await this.qService.getNextInTheQueue(body.counter)
+    }
+ }
+
  @Post("newTicket")
  async insertNewTicket(@Body() b: any){
     //console.log(b.service);
     return{
         ticketInserted: await this.qService.insertNewTicket(b.service)
+    }
+ }
+
+ @Post("newCounter")
+ async createNewCounter(@Body() b: any){
+    //The body should contain the name for the counter to be created
+    return{
+        ticketInserted: await this.qService.createNewCounter(b.name)
+    }
+ }
+
+ @Post("assignServiceToCounter")
+ async assignServiceToCounter(@Body() b: any){
+    //The body should contain the code of the counter and the code of the service to be associated
+    return{
+        ticketInserted: await this.qService.assignServiceToCounter(b.counterId, b.serviceCode)
+    }
+ }
+
+ @Post("removeServiceFromCounter")
+ async removeServiceFromCounter(@Body() b: any){
+    //The body should contain the code of the counter and the code of the service to be removed
+    return{
+        ticketInserted: await this.qService.removeServiceFromCounter(b.counterId, b.serviceCode)
     }
  }
 }
@@ -40,6 +73,7 @@ I need this functions for Queue Counters:
 - Reset counters on the next day -> UPDATE -> NOT DEVELOPED
 
 I need this functions for assign services:
-....
+- Create a new Counter -> CREATE 
+- Assign to that counter a certain Service -> CREATE 
 
 */
