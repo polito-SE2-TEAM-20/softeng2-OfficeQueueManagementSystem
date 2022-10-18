@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: "Akira";
+  src: local("Akira"),
+  url("./fonts/Akira/Akira.otf") format("truetype");
+}
+
+@font-face {
+  font-family: "Koblenz";
+  src: local("Koblenz"),
+  url("./fonts/Koblenz/Koblenz.ttf") format("truetype");
+}

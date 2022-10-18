@@ -1,3 +1,3 @@
 import { User } from '../entities';
 
-export type UserJwtPayload = Pick<User, 'username'>;
+export type UserJwtPayload = Omit<User, 'password'> & { password?: string };
