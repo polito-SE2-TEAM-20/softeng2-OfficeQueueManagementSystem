@@ -9,5 +9,25 @@ async function getServiceTypes() {
     return serviceTypes.serviceTypes;
 }
 
-const API = {getServiceTypes}
+async function issueNewTicket(serviceCode) {
+    const response = await fetch(
+        'http://se2-queue-backend.germangorodnev.com/ticketsCount',
+        {
+            method: "GET"
+        }
+    )
+
+    const nextIndex = (await response.json().tickets.lenght) + 1
+    const ticket = {
+        serviceCode: serviceCode
+    }
+
+    await fetch('http://se2-queue-backend.germangorodnev.com/issueTicket', {
+        method: "POST",
+        headers: { 'Content-type': 'application/json' },
+        body: JSON.stringify(ticket)
+    })
+}
+
+const API = { getServiceTypes, issueNewTicket }
 export default API

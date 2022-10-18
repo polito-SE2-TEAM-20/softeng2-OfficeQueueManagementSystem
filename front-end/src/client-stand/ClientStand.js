@@ -2,7 +2,6 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import './style/client-style.css';
-import { onClickWrapper } from './OnClickClientStand'
 import ClientSelection from './sounds/clientSelection.mp3'
 import { Howl, Howler } from 'howler'
 import { useEffect, useState } from 'react';
@@ -42,7 +41,7 @@ const ClientStand = () => {
                 {
                     serviceTypes.sort((x, y) => x.code > y.code).map((service) => {
                         return (
-                            <Col className="button hoverButton" onClick={() => { onClickWrapper(service.code); soundPlayClass.SoundPlay(audioClip.sound) }}>
+                            <Col className="button hoverButton" onClick={() => { API.issueNewTicket(service.code); soundPlayClass.SoundPlay(audioClip.sound) }}>
                                 <Row>
                                     {
                                         service.code == "A" ?

@@ -1,14 +1,11 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import ClientStand from './client-stand/ClientStand';
-
 import { LoginForm } from './Login/Login';
 import API from './API';
-
 import Officerpage from './OfficerPage/officerpage';
 import Administratorpage from './AdministratorPage/administratorpage';
 import {useState } from 'react';
-
 import CounterAssign from './admin-counter-assignment/CounterAssign'
 import React from "react";
 import {
