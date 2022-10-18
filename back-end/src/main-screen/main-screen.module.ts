@@ -1,9 +1,10 @@
 import { Module } from '@nestjs/common';
-import { MainScreenService } from './main-screen.service';
+
 import { MainScreenController } from './main-screen.controller';
+import { MainScreenService } from './main-screen.service';
 
 @Module({
   providers: [MainScreenService],
-  controllers: [MainScreenController]
+  controllers: [MainScreenController],
 })
 export class MainScreenModule {}
