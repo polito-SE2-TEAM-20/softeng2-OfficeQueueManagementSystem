@@ -1,0 +1,11 @@
+input.split is not a function
+TypeError: input.split is not a function
+    at Object.lines (c:\Users\maxbr\.vscode\extensions\ply-ct.vscode-ply-2.2.3\node_modules\@ply-ct\ply\dist\util.js:68:18)
+    at Object.replace (c:\Users\maxbr\.vscode\extensions\ply-ct.vscode-ply-2.2.3\node_modules\@ply-ct\ply\dist\subst.js:89:29)
+    at PlyRequest.getRequest (c:\Users\maxbr\.vscode\extensions\ply-ct.vscode-ply-2.2.3\node_modules\@ply-ct\ply\dist\request.js:112:26)
+    at PlyRequest.run (c:\Users\maxbr\.vscode\extensions\ply-ct.vscode-ply-2.2.3\node_modules\@ply-ct\ply\dist\request.js:148:36)
+    at Suite.runTests (c:\Users\maxbr\.vscode\extensions\ply-ct.vscode-ply-2.2.3\node_modules\@ply-ct\ply\dist\suite.js:182:37)
+    at async Suite.run (c:\Users\maxbr\.vscode\extensions\ply-ct.vscode-ply-2.2.3\node_modules\@ply-ct\ply\dist\suite.js:87:20)
+    at async PlyRunner.runSuiteTests (c:\Users\maxbr\.vscode\extensions\ply-ct.vscode-ply-2.2.3\node_modules\@ply-ct\ply\dist\runner.js:52:58)
+    at async Plier.run (c:\Users\maxbr\.vscode\extensions\ply-ct.vscode-ply-2.2.3\node_modules\@ply-ct\ply\dist\ply.js:290:9)
+Request 'newTicket-test' ERRORED in 7 ms: input.split is not a function

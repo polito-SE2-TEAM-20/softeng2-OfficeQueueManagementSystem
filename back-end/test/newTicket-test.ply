@@ -1,0 +1,6 @@
+newTicket-test:
+  url: http://localhost:3500/queues/newTicket
+  method: POST
+  body:
+    service: A
+  headers: {}
