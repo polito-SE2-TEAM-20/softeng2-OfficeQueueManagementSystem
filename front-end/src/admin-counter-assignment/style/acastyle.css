@@ -1,0 +1,38 @@
+.category {
+    background-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 25px;
+    width: fit-content;
+}
+
+.box {
+    background-color: white;
+    color: #414141;
+    border-color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    margin-left: 35px;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: fit-content;
+    font-weight: bold;
+}
+
+
+.headerServiceTypesAssignment {
+    background-color: #3BF585;
+    margin-bottom: 1rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 50px;
+    padding-right: 0px;
+    padding-top: 0px;
+    color: #414141;
+    display: inline;
+}

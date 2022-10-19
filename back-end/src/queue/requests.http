@@ -15,5 +15,36 @@ POST http://localhost:3500/queues/lastTicket
 content-type: application/json
 
 {
-    "service": "A"
+    "service": "B"
+}
+
+###
+//This test is used to retrieve next person 
+//in the queue for a specified counter
+POST http://localhost:3500/queues/nextInTheQueue
+content-type: application/json
+
+{
+    "counter": 4
+}
+
+
+###
+//This test is used to create a new counter
+POST http://localhost:3500/queues/newCounter
+content-type: application/json
+
+{
+    "name": "Counter 3"
+}
+
+
+###
+//This test is used to create a new counter
+POST http://localhost:3500/queues/assignServiceToCounter
+content-type: application/json
+
+{
+    "counterId": "6",
+    "serviceCode": "C"
 }

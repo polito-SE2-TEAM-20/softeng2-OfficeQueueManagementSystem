@@ -10,10 +10,4 @@ export * from './ticket.entity';
 export * from './counter-service-type.entity';
 export * from './counter.entity';
 
-export const entities = [
-  User,
-  Service,
-  Ticket,
-  Counter,
-  CounterServiceType,
-];
+export const entities = [User, Service, Ticket, Counter, CounterServiceType];

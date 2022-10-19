@@ -4,17 +4,19 @@ import Col from 'react-bootstrap/Col'
 import { useState, useEffect } from 'react'
 
 const MSNewTicket = (props) => {
-    const [s, setS] = useState(false);
+    const [newTicketAnimation, setNewTicketAnimation] = useState(false);
 
+    /*
     useEffect(() => {
         setTimeout(() => {
-            setS(true)
+            setNewTicketAnimation(true)
 
             setTimeout(() => {
-                setS(false)
+                setNewTicketAnimation(false)
             }, 2*1000)
         }, 1000*3)
     }, []);
+    */
 
     return (
         <>
@@ -25,9 +27,9 @@ const MSNewTicket = (props) => {
                     </Col>
                 </Row>
             </Container>
-            <div class={`newTicketBox center ${s?"transparencyAnimation":""}`}>
+            <div class={`newTicketBox center ${newTicketAnimation ? "transparencyAnimation" : ""}`}>
                 <div class="newTicketText">
-                    A014
+                    {props.listOfTickets[0].ticketCode}
                 </div>
                 <div style={{ color: "#ffffff" }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
@@ -35,7 +37,7 @@ const MSNewTicket = (props) => {
                     </svg>
                 </div>
                 <div class="newTicketText">
-                    Counter 1 (C#1)
+                    {props.listOfTickets[0].counterID}
                 </div>
             </div>
         </>

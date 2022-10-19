@@ -39,7 +39,6 @@
     border-top-right-radius: 50px;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
-    margin-top: 15px;
     margin-left: 15px;
     color: #ffffff;
     font-family: Koblenz;
@@ -117,7 +116,7 @@
 .center {
     margin: 0;
     position: relative;
-    top: 30%;
+    top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
 }

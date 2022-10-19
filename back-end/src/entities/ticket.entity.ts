@@ -24,7 +24,7 @@ export class Ticket {
   @Column({
     type: 'integer',
     nullable: false,
-    default: TicketState.assigned,
+    default: TicketState.notAssigned,
   })
   state!: number;
 
@@ -34,4 +34,11 @@ export class Ticket {
     default: null,
   })
   servedAt!: string;
+
+  @Column({
+    type: 'integer',
+    nullable: false,
+    default: null,
+  })
+  globalPosition!: number;
 }

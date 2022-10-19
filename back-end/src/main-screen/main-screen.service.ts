@@ -1,26 +1,23 @@
 import { Injectable } from '@nestjs/common';
-import { Ticket } from 'src/entities';
-import { DataSource, Equal } from 'typeorm';
+import { DataSource } from 'typeorm';
+
+import { Ticket } from '../entities';
 
 @Injectable()
 export class MainScreenService {
+  constructor(private dataSource: DataSource) {}
 
-    constructor(
-        private dataSource :DataSource
-    ){};
+  async retrieveLastFive() {
+    const last = await this.dataSource
+      .getRepository(Ticket)
+      .createQueryBuilder('ticket')
+      .where('ticket.state = 1')
+      .orderBy('ticket.servedAt', 'DESC')
+      .limit(5)
+      .getMany();
 
-    async retrieveLastFive() {
+    const conc = last.map(t => t.serviceCode + t.position);
 
-        const last = await this.dataSource.getRepository(Ticket)
-        .createQueryBuilder("ticket")
-        .where("ticket.state = 1")
-        .orderBy("ticket.servedAt", "DESC")
-        .limit(5)
-        .getMany()
-        
-        const conc = last.map(t => t.serviceCode + t.position)
-
-        return conc
-    }
-
+    return conc;
+  }
 }
