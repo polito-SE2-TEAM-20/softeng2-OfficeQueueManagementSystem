@@ -22,8 +22,6 @@ export class MainScreenService {
       .limit(5)
       .getMany();
 
-    const conc = tickets.map(t => t.serviceCode + t.position);
-
-    return conc;
+    return tickets;
   }
 }
