@@ -33,6 +33,7 @@ const CounterAssign = () => {
             <Row className="headerServiceTypesAssignment">
                 <div style={{ fontFamily: "Akira", fontSize: "70px" }}>Service Types assignment</div>
             </Row>
+            
             <Row style={{ marginTop: "120px", paddingLeft: "60px" }}>
                 <Row>
                     <div className="category">
@@ -42,7 +43,7 @@ const CounterAssign = () => {
                         <div className="align-middle" style={{ display: "inline", paddingLeft: "18px", fontSize: "50px" }}><b>PICK A COUNTER</b></div>
                     </div>
                 </Row>
-                <Row style={{ marginTop: "10px", marginLeft: "20px" }}>
+                <Row style={{ paddingTop: "10px", paddingLeft: "45px" }}>
                     <Form.Select aria-label="Default select example" style={{ width: "fit-content" }}>
                         <option>Select a counter...</option>
                         {
@@ -55,6 +56,7 @@ const CounterAssign = () => {
                     </Form.Select>
                 </Row>
             </Row>
+
             <br></br>
             <br></br>
             <br></br>
