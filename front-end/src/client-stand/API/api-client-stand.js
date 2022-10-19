@@ -14,7 +14,14 @@ async function issueNewTicket(serviceCode) {
         method: "POST",
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify({service:serviceCode})
-    })
+    });
+    if (response.ok) {
+      const newT = await response.json();
+      return newT;
+    } else {
+      const errDetail = await response.json();
+      throw errDetail.message;
+    }
 }
 
 const API = { getServiceTypes, issueNewTicket }
