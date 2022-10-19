@@ -26,4 +26,10 @@ export class User {
     nullable: false,
   })
   role!: UserRole;
+
+  @Column({
+    type: 'integer',
+    nullable: true,
+  })
+  counterId!: number | null;
 }
