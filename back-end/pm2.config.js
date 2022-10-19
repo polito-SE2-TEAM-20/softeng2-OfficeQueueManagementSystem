@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'se2-queue-server',
-      script: 'npm run start',
+      script: 'npm run build && node dist/main',
       instances: 1,
       autorestart: true,
       watch: false,
