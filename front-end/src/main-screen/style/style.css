@@ -113,6 +113,28 @@
     border-left-style: solid;
 }
 
+.leftQueueItemVoid {
+    background-color: #228FF5;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+}
+
+.rightQueueItemVoid {
+    background-color: #0F5EA8;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    color: white;
+    text-align: center;
+    border-left: #F5742F;
+    border-left-style: solid;
+}
+
 .center {
     margin: 0;
     position: relative;
