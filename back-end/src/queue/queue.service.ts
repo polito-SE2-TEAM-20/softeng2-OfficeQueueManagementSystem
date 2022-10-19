@@ -1,4 +1,4 @@
-import { Injectable, MaxFileSizeValidator } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { Counter, CounterServiceType, Service, Ticket } from 'src/entities';
 import { DataSource } from 'typeorm';
 

@@ -15,16 +15,15 @@ export class AuthController {
 
   @UseGuards(LocalAuthGuard)
   @Post('login')
-  async login(@Request() req: any): Promise<{ token: string }> {
+  async login(
+    @Request() req: any,
+  ): Promise<{ token: string } & Pick<User, 'name' | 'role'>> {
     return await this.service.login(req.user);
   }
 
   @AuthenticatedOnly()
   @Get('me')
   async me(@CurrentUser() user: UserJwtPayload) {
-    return await this.dataSource.getRepository(User).findOne({
-      select: ['name', 'username', 'role'],
-      where: { username: user.username },
-    });
+    return user;
   }
 }

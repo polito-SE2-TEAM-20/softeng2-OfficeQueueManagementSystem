@@ -1,24 +1,25 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
-import { QueueService } from "./queue.service";
+import { Body, Controller, Get, Post } from '@nestjs/common';
+
+import { QueueService } from './queue.service';
 
 @Controller('queues')
 export class QueueController {
- constructor(private qService :QueueService){}   
+  constructor(private qService: QueueService) {}
 
- @Get()
- async retrieveServices() {
+  @Get()
+  async retrieveServices() {
     return {
-      services: await this.qService.retrieveServices()
-    }
- }
+      services: await this.qService.retrieveServices(),
+    };
+  }
 
- @Post('lastTicket')
- async getLastTicket(@Body() body: any) {
+  @Post('lastTicket')
+  async getLastTicket(@Body() body: any) {
     //Used for DEBUGGING: console.log(body.service)
     return {
-        lastTicket: await this.qService.getLastTicket(body.service)
-    }
- }
+      lastTicket: await this.qService.getLastTicket(body.service),
+    };
+  }
 
  @Post('nextInTheQueue')
  async getNextInTheQueue(@Body() body: any) {
@@ -61,9 +62,6 @@ export class QueueController {
     }
  }
 }
-
-
-
 
 /*
 I need this functions for Queue Counters:
