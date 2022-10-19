@@ -27,4 +27,11 @@ export class Ticket {
     default: TicketState.assigned,
   })
   state!: number;
+
+  @Column({
+    type: 'text',
+    nullable: true,
+    default: null,
+  })
+  servedAt!: string;
 }
