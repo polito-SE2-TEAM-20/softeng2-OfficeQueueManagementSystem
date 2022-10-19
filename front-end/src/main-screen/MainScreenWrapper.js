@@ -5,16 +5,25 @@ import Col from 'react-bootstrap/esm/Col';
 import TimeAndDate from './TimeAndDate'
 import QueueHistory from './QueueHistory';
 import OQMS from './OQMS';
+import API from './API/api-main-screen';
 import { useState, useEffect } from 'react'
 
 const MainScreenWrapper = () => {
-    const [listOfTickets, setListOfTickets] = useState([
-        { ticketCode: "A008", counterID: "C2" },
-        { ticketCode: "A006", counterID: "C2" },
-        { ticketCode: "B003", counterID: "C1" },
-        { ticketCode: "B002", counterID: "C2" },
-        { ticketCode: "C001", counterID: "C1" },
-    ]);
+    const [listOfTickets, setListOfTickets] = useState([]);
+
+    useEffect(() => {
+        const sectionCodeWrapper = setInterval(() => {
+            const getLastFiveTickets = async () => {
+                const listOfTickets = await API.getLastFiveTickets();
+                setListOfTickets(listOfTickets.tickets);
+                console.log(listOfTickets)
+            }
+            getLastFiveTickets();
+        }, 1000);
+        return () => {
+            clearInterval(sectionCodeWrapper)
+        }
+    }, [])
 
     return (
         <Container fluid>

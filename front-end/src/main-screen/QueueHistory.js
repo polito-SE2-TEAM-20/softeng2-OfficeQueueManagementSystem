@@ -1,6 +1,10 @@
 import Table from 'react-bootstrap/Table'
 
 const QueueHistory = (props) => {
+
+    if(!props.listOfTickets.length) {
+        return null;
+    }
     return (
         <>
             <p class="sectionTitleRight" style={{ color: "#ffffff", marginTop: "100px" }}>Queue history</p>
@@ -16,8 +20,8 @@ const QueueHistory = (props) => {
                             return (
                                 <>
                                     <tr>
-                                        <td style={{ backgroundColor: "#228FF5", borderTop: 'none', borderBottom: 'none' }} className="leftQueueItem">{ticket.ticketCode}</td>
-                                        <td style={{ backgroundColor: "#0F5EA8", borderTop: 'none', borderBottom: 'none' }} className="rightQueueItem">{ticket.counterID}</td>
+                                        <td style={{ backgroundColor: "#228FF5", borderTop: 'none', borderBottom: 'none' }} className="leftQueueItem">{ticket.code}</td>
+                                        <td style={{ backgroundColor: "#0F5EA8", borderTop: 'none', borderBottom: 'none' }} className="rightQueueItem">{ticket?.counter ? "N/A" : ticket.counter.name}</td>
                                     </tr>
                                     <br/>
                                 </>
