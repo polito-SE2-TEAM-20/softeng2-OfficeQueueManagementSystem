@@ -22,6 +22,12 @@ export class MainScreenService {
       .limit(5)
       .getMany();
 
+    tickets.map(ticket => {
+      (ticket as any).code =
+        ticket.serviceCode + ticket.position.toString().padStart(4, '0');
+      return ticket;
+    });
+
     return tickets;
   }
 }

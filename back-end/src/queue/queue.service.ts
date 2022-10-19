@@ -170,6 +170,7 @@ export class QueueService {
         serviceCode: next.serviceCode,
         counterId,
         state: TicketState.assigned,
+        servedAt: new Date().toISOString(),
       });
 
       return next.serviceCode + next.position;
