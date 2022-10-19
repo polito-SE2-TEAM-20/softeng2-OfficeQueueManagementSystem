@@ -2,7 +2,10 @@ import { Container, Row, Col} from 'react-bootstrap';
 import { LogoutButton } from '../../Login/Login';
 import Available from './available';
 
+
 const Officerpage = ({user, logout}) =>{
+    
+
     return (
         <Container fluid style={{ minHeight: "100vh", backgroundColor: "#31A861" }}>
             <Row>
@@ -16,7 +19,7 @@ const Officerpage = ({user, logout}) =>{
             </Row>
             <Row>
                 <Col >
-                    <Available />
+                    <Available user={user}/>
                 </Col>
             </Row>
         </Container>
@@ -26,3 +29,4 @@ const Officerpage = ({user, logout}) =>{
 }
 
 export default Officerpage;
+

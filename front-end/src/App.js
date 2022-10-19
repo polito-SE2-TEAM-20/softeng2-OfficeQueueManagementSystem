@@ -6,7 +6,6 @@ import { NotFoundLayout } from './Layouts/PageLayout';
 import API from './API';
 import Officerpage from './Management/OfficerPage/officerpage';
 import Ticket from './ticket/ticket';
-import Administratorpage from './Management/AdministratorPage/administratorpage';
 import Managementpage from './Management/managementpage';
 import {useState } from 'react';
 import CounterAssign from './admin-counter-assignment/CounterAssign'
@@ -43,8 +42,9 @@ function App2() {
             setLoggedIn(true);
             setUser(user);
             setMessage('');
+            console.log(user);
             if(user.role){
-              navigate('/administrator');
+              navigate('/counterassign');
             }else{
               navigate('/officer');
             }
@@ -52,6 +52,7 @@ function App2() {
           })
           .catch(err => {
             setMessage(err);
+            console.log(err);
           }
           )
       }
@@ -71,9 +72,8 @@ function App2() {
         <Route path="/mainscreen" element={<MainScreenWrapper/>} />
         <Route path="/clientstand" element={<ClientStand />} />
         <Route path="/counterassign" element={<CounterAssign />} />
-        <Route path = "/login" element={<LoginForm login={doLogIn} user={user} logout={doLogOut}/>}></Route>
+        <Route path = "/login" element={<LoginForm login={doLogIn} user={user} logout={doLogOut} message={message}/>}></Route>
         <Route path = '/officer' element = {<Officerpage user={user}  logout={doLogOut}/>}/>
-        <Route path = '/administrator' element = {<Administratorpage user={user}  logout={doLogOut}/>}/>
         <Route path = '/management' element = {<Managementpage />}/>
         <Route path = '/ticket' element = {<Ticket />}/>
         <Route path="*" element={<NotFoundLayout />} />
