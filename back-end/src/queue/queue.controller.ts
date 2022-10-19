@@ -21,46 +21,54 @@ export class QueueController {
     };
   }
 
- @Post('nextInTheQueue')
- async getNextInTheQueue(@Body() body: any) {
+  @Post('nextInTheQueue')
+  async getNextInTheQueue(
+    @Body() body: any,
+  ): Promise<{ nextInTheQueue: string | null }> {
     //The body should contain the counter which is going to accept the client
     //in order to retrieve all the services queues
     return {
-        nextInTheQueue: await this.qService.getNextInTheQueue(body.counter)
-    }
- }
+      nextInTheQueue: await this.qService.getNextInTheQueue(body.counter), //Could return null if queues are empty
+    };
+  }
 
- @Post("newTicket")
- async insertNewTicket(@Body() b: any){
+  @Post('newTicket')
+  async insertNewTicket(@Body() b: any) {
     //console.log(b.service);
-    return{
-        ticketInserted: await this.qService.insertNewTicket(b.service)
-    }
- }
+    return {
+      ticketInserted: await this.qService.insertNewTicket(b.service),
+    };
+  }
 
- @Post("newCounter")
- async createNewCounter(@Body() b: any){
+  @Post('newCounter')
+  async createNewCounter(@Body() b: any) {
     //The body should contain the name for the counter to be created
-    return{
-        ticketInserted: await this.qService.createNewCounter(b.name)
-    }
- }
+    return {
+      ticketInserted: await this.qService.createNewCounter(b.name),
+    };
+  }
 
- @Post("assignServiceToCounter")
- async assignServiceToCounter(@Body() b: any){
+  @Post('assignServiceToCounter')
+  async assignServiceToCounter(@Body() b: any) {
     //The body should contain the code of the counter and the code of the service to be associated
-    return{
-        ticketInserted: await this.qService.assignServiceToCounter(b.counterId, b.serviceCode)
-    }
- }
+    return {
+      ticketInserted: await this.qService.assignServiceToCounter(
+        b.counterId,
+        b.serviceCode,
+      ),
+    };
+  }
 
- @Post("removeServiceFromCounter")
- async removeServiceFromCounter(@Body() b: any){
+  @Post('removeServiceFromCounter')
+  async removeServiceFromCounter(@Body() b: any) {
     //The body should contain the code of the counter and the code of the service to be removed
-    return{
-        ticketInserted: await this.qService.removeServiceFromCounter(b.counterId, b.serviceCode)
-    }
- }
+    return {
+      ticketInserted: await this.qService.removeServiceFromCounter(
+        b.counterId,
+        b.serviceCode,
+      ),
+    };
+  }
 }
 
 /*
