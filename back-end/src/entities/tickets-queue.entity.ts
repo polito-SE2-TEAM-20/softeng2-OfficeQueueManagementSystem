@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('tickets_queue')
 export class TicketsQueue {

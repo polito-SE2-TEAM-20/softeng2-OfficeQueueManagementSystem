@@ -29,6 +29,13 @@ export class Ticket {
   state!: number;
 
   @Column({
+    type: 'text',
+    nullable: true,
+    default: null,
+  })
+  servedAt!: string;
+
+  @Column({
     type: 'integer',
     nullable: false,
     default: null,

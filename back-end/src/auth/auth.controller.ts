@@ -17,7 +17,7 @@ export class AuthController {
   @Post('login')
   async login(
     @Request() req: any,
-  ): Promise<{ token: string } & Pick<User, 'name' | 'role'>> {
+  ): Promise<{ token: string } & Omit<User, 'password'>> {
     return await this.service.login(req.user);
   }
 
