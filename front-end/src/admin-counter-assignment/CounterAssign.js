@@ -31,7 +31,7 @@ const CounterAssign = () => {
     return (
         <Container fluid style={{ minHeight: "100vh", backgroundColor: "#31A861", paddingLeft: "30px", paddingTop: "30px" }}>
             <Row className="headerServiceTypesAssignment">
-                <div style={{ fontFamily: "Akira", fontSize: "70px" }}>Service Types assignment</div>
+                <div style={{ fontFamily: "Akira", fontSize: "50px" }}>Service Types assignment</div>
             </Row>
             
             <Row style={{ marginTop: "120px", paddingLeft: "60px" }}>
