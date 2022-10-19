@@ -1,7 +1,3 @@
-import Container from 'react-bootstrap/Container'
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import QueueItem from './QueueItem'
 import Table from 'react-bootstrap/Table'
 
 const QueueHistory = (props) => {
