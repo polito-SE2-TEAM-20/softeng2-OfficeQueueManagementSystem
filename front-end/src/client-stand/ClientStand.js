@@ -2,10 +2,10 @@ import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import './style/client-style.css';
-import { onClickWrapper } from './OnClickClientStand'
 import ClientSelection from './sounds/clientSelection.mp3'
 import { Howl, Howler } from 'howler'
 import { useEffect, useState } from 'react';
+import API from './API/api-client-stand'
 
 class SoundPlayClass {
     SoundPlay = (src) => {
@@ -15,6 +15,16 @@ class SoundPlayClass {
 }
 
 const ClientStand = () => {
+    const [serviceTypes, setServiceTypes] = useState([{ code: "", name: "", expectedTimeSeconds: -1 }]);
+
+    useEffect(() => {
+        const getServiceTypes = async () => {
+            const serviceTypesList = await API.getServiceTypes();
+            setServiceTypes(serviceTypesList);
+        }
+        getServiceTypes();
+    }, [])
+
     const soundPlayClass = new SoundPlayClass()
     const audioClip = { sound: ClientSelection, name: "clientSelection.mp3" }
 
@@ -24,77 +34,42 @@ const ClientStand = () => {
         <Container fluid style={{ minHeight: "100vh", backgroundColor: "#31A861" }}>
             <Row>
                 <p className='headerClient' style={{ fontSize: "40px", textAlign: "center", paddingTop: "20px", paddingBottom: "20px", fontFamily: "Koblenz" }}>
-                    <b>Please select a service to get enqueued.</b>
+                    <b>Please, select a service to get enqueued.</b>
                 </p>
             </Row>
             <Row style={{ marginTop: "100px" }}>
-                <Col className="button hoverButton" onClick={() => { onClickWrapper(0); soundPlayClass.SoundPlay(audioClip.sound) }}>
-                    <Row>
-                        <svg xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: "15px" }} width="60" height="60" fill="currentColor" class="bi bi-bandaid" viewBox="0 0 16 16">
-                            <path d="M14.121 1.879a3 3 0 0 0-4.242 0L8.733 3.026l4.261 4.26 1.127-1.165a3 3 0 0 0 0-4.242ZM12.293 8 8.027 3.734 3.738 8.031 8 12.293 12.293 8Zm-5.006 4.994L3.03 8.737 1.879 9.88a3 3 0 0 0 4.241 4.24l.006-.006 1.16-1.121ZM2.679 7.676l6.492-6.504a4 4 0 0 1 5.66 5.653l-1.477 1.529-5.006 5.006-1.523 1.472a4 4 0 0 1-5.653-5.66l.001-.002 1.505-1.492.001-.002Z" />
-                            <path d="M5.56 7.646a.5.5 0 1 1-.706.708.5.5 0 0 1 .707-.708Zm1.415-1.414a.5.5 0 1 1-.707.707.5.5 0 0 1 .707-.707ZM8.39 4.818a.5.5 0 1 1-.708.707.5.5 0 0 1 .707-.707Zm0 5.657a.5.5 0 1 1-.708.707.5.5 0 0 1 .707-.707ZM9.803 9.06a.5.5 0 1 1-.707.708.5.5 0 0 1 .707-.707Zm1.414-1.414a.5.5 0 1 1-.706.708.5.5 0 0 1 .707-.708ZM6.975 9.06a.5.5 0 1 1-.707.708.5.5 0 0 1 .707-.707ZM8.39 7.646a.5.5 0 1 1-.708.708.5.5 0 0 1 .707-.708Zm1.413-1.414a.5.5 0 1 1-.707.707.5.5 0 0 1 .707-.707Z" />
-                        </svg>
-                    </Row>
-                    <Row>
-                        <div style={{textAlign: "center"}}>Service Name</div>
-                    </Row>
-                </Col>
-                <Col className="button hoverButton" onClick={() => {onClickWrapper(1); soundPlayClass.SoundPlay(audioClip.sound)}}>
-                    <Row>
-                        <svg xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: "15px" }} width="60" height="60" fill="currentColor" class="bi bi-battery-charging" viewBox="0 0 16 16">
-                            <path d="M9.585 2.568a.5.5 0 0 1 .226.58L8.677 6.832h1.99a.5.5 0 0 1 .364.843l-5.334 5.667a.5.5 0 0 1-.842-.49L5.99 9.167H4a.5.5 0 0 1-.364-.843l5.333-5.667a.5.5 0 0 1 .616-.09z" />
-                            <path d="M2 4h4.332l-.94 1H2a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h2.38l-.308 1H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z" />
-                            <path d="M2 6h2.45L2.908 7.639A1.5 1.5 0 0 0 3.313 10H2V6zm8.595-2-.308 1H12a1 1 0 0 1 1 1v4a1 1 0 0 1-1 1H9.276l-.942 1H12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.405z" />
-                            <path d="M12 10h-1.783l1.542-1.639c.097-.103.178-.218.241-.34V10zm0-3.354V6h-.646a1.5 1.5 0 0 1 .646.646zM16 8a1.5 1.5 0 0 1-1.5 1.5v-3A1.5 1.5 0 0 1 16 8z" />
-                        </svg>
-                    </Row>
-                    <Row>
-                        <div style={{textAlign: "center"}}>Service Name</div>
-                    </Row>
-                </Col>
-                <Col className="button hoverButton" onClick={() => {onClickWrapper(2); soundPlayClass.SoundPlay(audioClip.sound)}}>
-                    <Row>
-                        <svg xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: "15px" }} width="60" height="60" fill="currentColor" class="bi bi-calendar-range" viewBox="0 0 16 16">
-                            <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1zM1 9h4a1 1 0 0 1 0 2H1V9z" />
-                            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
-                        </svg>
-                    </Row>
-                    <Row>
-                        <div style={{textAlign: "center"}}>Service Name</div>
-                    </Row>
-                </Col>
-            </Row>
-            <Row>
-                <Col className="button hoverButton" onClick={() => {onClickWrapper(3); soundPlayClass.SoundPlay(audioClip.sound)}}>
-                    <Row>
-                        <svg xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: "15px" }} width="60" height="60" fill="currentColor" class="bi bi-camera-video" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M0 5a2 2 0 0 1 2-2h7.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 4.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 13H2a2 2 0 0 1-2-2V5zm11.5 5.175 3.5 1.556V4.269l-3.5 1.556v4.35zM2 4a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h7.5a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1H2z" />
-                        </svg>
-                    </Row>
-                    <Row>
-                        <div style={{textAlign: "center"}}>Service Name</div>
-                    </Row>
-                </Col>
-                <Col className="button hoverButton" onClick={() => {onClickWrapper(4); soundPlayClass.SoundPlay(audioClip.sound)}}>
-                    <Row>
-                        <svg xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: "15px" }} width="60" height="60" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
-                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
-                        </svg>
-                    </Row>
-                    <Row>
-                        <div style={{textAlign: "center"}}>Service Name</div>
-                    </Row>
-                </Col>
-                <Col className="button hoverButton" onClick={() => {onClickWrapper(5); soundPlayClass.SoundPlay(audioClip.sound)}}>
-                    <Row>
-                        <svg xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: "15px" }} width="60" height="60" fill="currentColor" class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
-                            <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1h-9zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z" />
-                        </svg>
-                    </Row>
-                    <Row>
-                        <div style={{textAlign: "center"}}>Service Name</div>
-                    </Row>
-                </Col>
+                {
+                    serviceTypes.sort((x, y) => x.code > y.code).map((service) => {
+                        return (
+                            <Col className="button hoverButton" onClick={() => { API.issueNewTicket(service.code); soundPlayClass.SoundPlay(audioClip.sound) }}>
+                                <Row>
+                                    {
+                                        service.code == "A" ?
+                                            (<svg xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: "15px" }} width="60" height="60" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+                                                <path d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.501.501 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89L8 0ZM3.777 3h8.447L8 1 3.777 3ZM2 6v7h1V6H2Zm2 0v7h2.5V6H4Zm3.5 0v7h1V6h-1Zm2 0v7H12V6H9.5ZM13 6v7h1V6h-1Zm2-1V4H1v1h14Zm-.39 9H1.39l-.25 1h13.72l-.25-1Z" />
+                                            </svg>) : <></>
+                                    }
+                                    {
+                                        service.code == "B" ?
+                                            (<svg xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: "15px" }} width="60" height="60" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                                                <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z" />
+                                                <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z" />
+                                            </svg>) : <></>
+                                    }
+                                    {
+                                        service.code == "C" ?
+                                            (<svg xmlns="http://www.w3.org/2000/svg" style={{ marginBottom: "15px" }} width="60" height="60" fill="currentColor" class="bi bi-question-circle-fill" viewBox="0 0 16 16">
+                                                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z" />
+                                            </svg>) : <></>
+                                    }
+                                </Row>
+                                <Row>
+                                    <div style={{ textAlign: "center" }}>{service.name}</div>
+                                </Row>
+                            </Col>
+                        );
+                    })
+                }
             </Row>
         </Container>
     );
