@@ -5,7 +5,7 @@ POST http://localhost:3500/queues/newTicket
 content-type: application/json
 
 {
-    "service": "B"
+    "service": "A"
 }
 
 ###
@@ -45,6 +45,6 @@ POST http://localhost:3500/queues/assignServiceToCounter
 content-type: application/json
 
 {
-    "counterId": "4",
-    "serviceCode": "A"
+    "counterId": "6",
+    "serviceCode": "C"
 }
