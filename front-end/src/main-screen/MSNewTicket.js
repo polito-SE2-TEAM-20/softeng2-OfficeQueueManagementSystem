@@ -32,7 +32,7 @@ const MSNewTicket = (props) => {
             </Container>
             <div class={`newTicketBox center ${newTicketAnimation ? "transparencyAnimation" : ""}`}>
                 <div class="newTicketText">
-                    {props.listOfTickets[0]?.code}
+                    {props.listOfTickets[0].code}
                 </div>
                 <div style={{ color: "#ffffff" }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
@@ -40,7 +40,7 @@ const MSNewTicket = (props) => {
                     </svg>
                 </div>
                 <div class="newTicketText">
-                    {props.listOfTickets[0]?.counter ? "N/A" : props.listOfTickets[0]?.counter.name}
+                    {!props.listOfTickets[0].counter ? "N/A" : props.listOfTickets[0].counter.name}
                 </div>
             </div>
         </>

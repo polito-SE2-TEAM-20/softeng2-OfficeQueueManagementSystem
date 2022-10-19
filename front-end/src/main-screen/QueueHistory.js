@@ -21,7 +21,7 @@ const QueueHistory = (props) => {
                                 <>
                                     <tr>
                                         <td style={{ backgroundColor: "#228FF5", borderTop: 'none', borderBottom: 'none' }} className="leftQueueItem">{ticket.code}</td>
-                                        <td style={{ backgroundColor: "#0F5EA8", borderTop: 'none', borderBottom: 'none' }} className="rightQueueItem">{ticket?.counter ? "N/A" : ticket.counter.name}</td>
+                                        <td style={{ backgroundColor: "#0F5EA8", borderTop: 'none', borderBottom: 'none' }} className="rightQueueItem">{!ticket.counter ? "N/A" : ticket.counter.name}</td>
                                     </tr>
                                     <br/>
                                 </>
