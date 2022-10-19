@@ -7,5 +7,12 @@ export class MainScreenController {
 
     constructor(private mainScreen: MainScreenService){}
 
+    @Get()
+    async retrieveLastFive() {
+        return {
+            tickets: await this.mainScreen.retrieveLastFive()
+        }
+    }
+
 
 }
