@@ -13,13 +13,15 @@ const QueueHistory = (props) => {
                 <tbody>
                     {
                         props.listOfTickets.map((ticket) => {
-                            return (<>
-                                <tr>
-                                    <td style={{ backgroundColor: "#228FF5", borderTop: 'none', borderBottom: 'none' }} className="leftQueueItem">{ticket.ticketCode}</td>
-                                    <td style={{ backgroundColor: "#0F5EA8", borderTop: 'none', borderBottom: 'none' }} className="rightQueueItem">{ticket.counterID}</td>
-                                </tr>
-                                <br></br>
-                            </>);
+                            return (
+                                <>
+                                    <tr>
+                                        <td style={{ backgroundColor: "#228FF5", borderTop: 'none', borderBottom: 'none' }} className="leftQueueItem">{ticket.ticketCode}</td>
+                                        <td style={{ backgroundColor: "#0F5EA8", borderTop: 'none', borderBottom: 'none' }} className="rightQueueItem">{ticket.counterID}</td>
+                                    </tr>
+                                    <br/>
+                                </>
+                            );
                         })
                     }
                 </tbody>
