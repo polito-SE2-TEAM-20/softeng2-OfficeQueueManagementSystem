@@ -1,4 +1,4 @@
-import { Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('tickets_queue')
 export class TicketsQueue {
@@ -9,4 +9,9 @@ export class TicketsQueue {
 
   @PrimaryGeneratedColumn('increment')
   position!: string;
+
+  @PrimaryColumn({
+    type: 'text',
+  })
+  servedAt!: string;
 }

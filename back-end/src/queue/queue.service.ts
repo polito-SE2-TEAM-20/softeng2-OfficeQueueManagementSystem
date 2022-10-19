@@ -38,6 +38,47 @@ export class QueueService {
       serviceCode: service,
       globalPosition: newGlobalCounter + 1,
     });
+
+    const s = await this.dataSource.getRepository(Service).findOneBy({
+      code: service
+    });
+
+    const peopleInQueue = await this.dataSource.getRepository(Ticket).countBy({
+      serviceCode: service,
+      state: TicketState.notAssigned
+    });
+
+    const CountersSer = await this.dataSource.getRepository(CounterServiceType).findBy({
+      serviceCode: service,
+    }); 
+    
+    const validCounters = CountersSer.map(t => t.counterId);
+    let sum = 0;
+    for (const c in validCounters) {
+      const numOfServices = await this.dataSource.getRepository(CounterServiceType).countBy({
+        counterId: validCounters[c],
+      });
+
+      sum += 1/numOfServices;
+    }
+
+    let timeReq = 0;
+    if(s !== null)
+      timeReq = s.expectedTimeSeconds;
+    else
+      return null;
+
+    //console.log("timeReq: "+ timeReq +"; PeopleInQueueForServiceA: "+ (peopleInQueue-1) + "; sum: "+sum);
+    const estimatedTime = timeReq * ((peopleInQueue-1)/sum + 0.5);
+    let TicketInfo = new Map();
+
+    TicketInfo.set("code", service+(newCounter+1));
+    TicketInfo.set("estimatedTime", estimatedTime);
+    //console.log(TicketInfo)
+    return {
+      "code" : TicketInfo.get("code"),
+      "estimatedTime": TicketInfo.get("estimatedTime")
+    }
   }
 
   //Function to GET last ticket for a specified service
