@@ -18,7 +18,7 @@ function LoginForm(props) {
     setErrorMessage('');
     const credentials = { username, password };
     let valid = true;
-    if (username === '' || password === '') {
+    if (username === '' || password === '' ) {
       valid = false;
       setShow(true);
     }
@@ -26,7 +26,7 @@ function LoginForm(props) {
     {
         props.login(credentials);
       }else{
-        setErrorMessage('Username and password cannot be empty');
+        setErrorMessage('Wrong username or password');
         setShow(true)
     }
   };
@@ -76,13 +76,13 @@ function LoginForm(props) {
 function LoginButton() {
     const navigate = useNavigate();
     return(
-        <Button type="button" class="btn btn-primary btn-lg" onClick={()=> navigate('/login')}>Login</Button>
+        <Button type="button" className="btn btn-primary btn-lg" onClick={()=> navigate('/login')}>Login</Button>
     )
   }
 
 function LogoutButton(props) {
   return(
-    <Button type="button" class="btn btn-primary btn-lg" onClick={props.logout}>Logout</Button>
+    <Button type="button" className="btn btn-primary btn-lg" onClick={props.logout}>Logout</Button>
   )
 }
 
