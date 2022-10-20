@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 
 import { TicketState } from '../common';
+import { getTicketCode } from '../common/utils';
 import { Counter, CounterServiceType, Service, Ticket } from '../entities';
 
 @Injectable()
@@ -157,23 +158,27 @@ export class QueueService {
       .getRawOne();
 
     //I take the ticket in the position previously computed and from the longest queue
-    const next = await this.dataSource
+    const nextTicket = await this.dataSource
       .getRepository(Ticket)
       .createQueryBuilder('t')
       .where('t.serviceCode = :service ', { service: longestQueue })
       .andWhere('t.position = :max', { max: maxTicket.max })
       .getOne();
 
-    if (next !== null) {
-      await this.dataSource.getRepository(Ticket).save({
-        position: next.position,
-        serviceCode: next.serviceCode,
-        counterId,
-        state: TicketState.assigned,
-        servedAt: new Date().toISOString(),
-      });
+    if (nextTicket !== null) {
+      await this.dataSource.getRepository(Ticket).update(
+        {
+          position: nextTicket.position,
+          serviceCode: nextTicket.serviceCode,
+        },
+        {
+          counterId,
+          state: TicketState.assigned,
+          servedAt: new Date().toISOString(),
+        },
+      );
 
-      return next.serviceCode + next.position;
+      return getTicketCode(nextTicket);
     }
 
     return null;
