@@ -164,7 +164,7 @@ export class QueueService {
       .getRepository(Ticket)
       .createQueryBuilder('t')
       .where('t.serviceCode = :service ', { service: longestQueue })
-      .andWhere('ticket.state = :state', { state: TicketState.notAssigned })
+      .andWhere('t.state = :state', { state: TicketState.notAssigned })
       .orderBy('t.position', 'ASC')
       .getOne();
 
