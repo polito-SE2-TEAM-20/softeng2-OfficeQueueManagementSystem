@@ -108,38 +108,43 @@ export class QueueService {
     const servicesSQL = await this.dataSource
       .getRepository(CounterServiceType)
       .createQueryBuilder('cst')
-      .select('serviceCode', 'service')
       .where('cst.counterId = :counterId', { counterId })
-      .getRawMany();
+      .getMany();
 
-    const services = servicesSQL.map(s => s.service);
-    //console.log(services);
+    const services = servicesSQL.map(s => s.serviceCode);
+    console.log('supported services', services);
 
     //COUNT for each service the number of tickets whose state is "not assigned"
     //GET the avgTimeToServe client for each service
     //Estimate (avgTimeToServe * CountOfService) -> 'Longest Queue'
     const counters = new Map();
 
-    for (const service in services) {
+    for (const serviceCode of services) {
       const c = await this.dataSource
         .getRepository(Ticket)
         .createQueryBuilder('t')
         .where('t.serviceCode = :serviceCode', {
-          serviceCode: services[service],
+          serviceCode,
         })
         .andWhere('t.state = 0')
         .getCount();
 
-      const avgTimeService = await this.dataSource
+      const serviceEntity = await this.dataSource
         .getRepository(Service)
         .createQueryBuilder('s')
-        .select('expectedTimeSeconds', 'time')
-        .where('s.code = :serviceCode', { serviceCode: services[service] })
-        .getRawOne();
-      //console.log(services[service]);
-      counters.set(services[service], c * avgTimeService.time);
+        .where('s.code = :serviceCode', { serviceCode })
+        .getOne();
+
+      if (!serviceEntity) {
+        throw new Error('Service not found');
+      }
+
+      //console.log(serviceCode);
+      counters.set(serviceCode, c * serviceEntity.expectedTimeSeconds);
       //In this way I have a Map like: {'A': 5tickets*50sEach}
     }
+
+    console.log('counters', counters);
 
     const longestQueueVal = Math.max(...counters.values());
     let longestQueue = '';
@@ -157,6 +162,8 @@ export class QueueService {
       .andWhere('ticket.serviceCode = :service', { service: longestQueue })
       .getRawOne();
 
+    console.log('max ticket', maxTicket);
+
     //I take the ticket in the position previously computed and from the longest queue
     const nextTicket = await this.dataSource
       .getRepository(Ticket)
@@ -164,6 +171,8 @@ export class QueueService {
       .where('t.serviceCode = :service ', { service: longestQueue })
       .andWhere('t.position = :max', { max: maxTicket.max })
       .getOne();
+
+    console.log('next ticket', nextTicket);
 
     if (nextTicket !== null) {
       await this.dataSource.getRepository(Ticket).update(
