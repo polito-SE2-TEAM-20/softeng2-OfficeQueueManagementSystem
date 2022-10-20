@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 
+import { getTicketCode } from '../common/utils';
 import { Counter, Ticket } from '../entities';
 
 @Injectable()
@@ -23,8 +24,7 @@ export class MainScreenService {
       .getMany();
 
     tickets.map(ticket => {
-      (ticket as any).code =
-        ticket.serviceCode + ticket.position.toString().padStart(4, '0');
+      (ticket as any).code = getTicketCode(ticket);
       return ticket;
     });
 
