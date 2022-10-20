@@ -54,7 +54,7 @@ const ClientStand = () => {
                     <b>Please, select a service to get enqueued.</b>
                 </p>
             </Row>
-            <Row style={{ marginTop: "100px" }}>
+            <Row style={{ marginTop: "230px" }}>
                 {
                     serviceTypes.sort((x, y) => x.code > y.code).map((service) => {
                         return (
