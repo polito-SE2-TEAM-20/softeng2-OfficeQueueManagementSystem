@@ -7,7 +7,7 @@ function NotFoundLayout() {
       <Container fluid style={{ minHeight: "100vh", backgroundColor: "#31A861" }}>
           <Row>
               <p  style={{ fontSize: "40px", textAlign: "center", paddingTop: "20px", paddingBottom: "20px", fontFamily: "Koblenz" }}>
-                  <b style={{fontFamily: "Akira", fontSize: "50px"}}>Post Office</b>
+                  <b style={{fontFamily: "Akira", fontSize: "50px"}}>Office Queue Management System</b>
                   <br></br>
                   <Link to="/management">
                     <Button variant='primary'>Management</Button>
