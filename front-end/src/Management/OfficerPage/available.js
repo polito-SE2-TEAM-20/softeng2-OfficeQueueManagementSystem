@@ -12,19 +12,19 @@ const Available = (props) => {
     const [show, setShow] = useState(false);
 
     function declareAvailable(c) {
-        console.log("sto dichiarando la mia disponibilità");
         API.declareAvailability(c)
-            .then(nextInTheQueue => {
+            .then(nextTicketQueue => {
                 setAvailable(true);
-                if (nextInTheQueue == null) {
+                if (nextTicketQueue === null) {
                     setErrorMessage('nobody waiting');
                     setShow(true);
                     setNextInTheQueue();
+                    console.log(nextTicketQueue);
                 } else {
-                    setNextInTheQueue(nextInTheQueue);
+                    setNextInTheQueue(nextTicketQueue);
                     setErrorMessage('');
                     setShow(false);
-                    console.log(nextInTheQueue);
+                    console.log(nextTicketQueue);
                 }
             })
             .catch(err => {
