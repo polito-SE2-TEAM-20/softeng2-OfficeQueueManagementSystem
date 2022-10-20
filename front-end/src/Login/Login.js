@@ -18,16 +18,20 @@ function LoginForm(props) {
     setErrorMessage('');
     const credentials = { username, password };
     let valid = true;
-    if (username === '' || password === '' ) {
+    if (username === '' || password === '') {
       valid = false;
+
+      setErrorMessage('Wrong username or password');
+
       setShow(true);
+
     }
     if(valid)
     {
-        props.login(credentials);
+        props.login(credentials, setShow, setErrorMessage);
       }else{
-        setErrorMessage('Wrong username or password');
-        setShow(true)
+        setErrorMessage('Username and password cannot be empty');
+        setShow(true);
     }
   };
 
