@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 
 import { TicketState } from '../common';
@@ -93,14 +93,20 @@ export class QueueService {
       .where('ticket.serviceCode = :service', { service })
       .getRawOne();
 
-    const ticket = await this.dataSource
+    const lastTicket = await this.dataSource
       .getRepository(Ticket)
       .createQueryBuilder('t')
       .where('t.serviceCode = :service ', { service })
       .andWhere('t.position = :max', { max: ticketCounter.max })
-      .getRawOne();
+      .andWhere('t.state = :state', { state: TicketState.notAssigned })
+      .orderBy('t.position', 'ASC')
+      .getOne();
 
-    return ticket;
+    if (!lastTicket) {
+      throw new InternalServerErrorException('No ticket');
+    }
+
+    return lastTicket;
   }
 
   async getNextInTheQueue(counterId) {
@@ -136,7 +142,7 @@ export class QueueService {
         .getOne();
 
       if (!serviceEntity) {
-        throw new Error('Service not found');
+        throw new InternalServerErrorException('Service not found');
       }
 
       //console.log(serviceCode);
@@ -153,23 +159,13 @@ export class QueueService {
       if (val == longestQueueVal) longestQueue = key;
     });
 
-    //I take max position for a not Assigned ticket from the 'longest queue'
-    const maxTicket = await this.dataSource
-      .getRepository(Ticket)
-      .createQueryBuilder('ticket')
-      .select('MAX(ticket.position)', 'max')
-      .where('ticket.state = :state', { state: TicketState.notAssigned })
-      .andWhere('ticket.serviceCode = :service', { service: longestQueue })
-      .getRawOne();
-
-    console.log('max ticket', maxTicket);
-
     //I take the ticket in the position previously computed and from the longest queue
     const nextTicket = await this.dataSource
       .getRepository(Ticket)
       .createQueryBuilder('t')
       .where('t.serviceCode = :service ', { service: longestQueue })
-      .andWhere('t.position = :max', { max: maxTicket.max })
+      .andWhere('ticket.state = :state', { state: TicketState.notAssigned })
+      .orderBy('t.position', 'ASC')
       .getOne();
 
     console.log('next ticket', nextTicket);
