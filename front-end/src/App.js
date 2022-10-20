@@ -1,7 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import ClientStand from './client-stand/ClientStand';
-import Client from './client-stand/Client';
 import { LoginForm } from './Login/Login';
 import { NotFoundLayout } from './Layouts/PageLayout';
 import API from './API';
@@ -71,8 +70,7 @@ function App2() {
     <>
       <Routes>
         <Route path="/mainscreen" element={<MainScreenWrapper/>} />
-        <Route path="/clientstand" element={<ClientStand />} />
-        <Route path="/client" element={<Client/>} />
+        <Route path="/clientstand" element={<ClientStand/>} />
         <Route path="/counterassign" element={<CounterAssign />} />
         <Route path = "/login" element={<LoginForm login={doLogIn} user={user} logout={doLogOut} message={message}/>}></Route>
         <Route path = '/officer' element = {<Officerpage user={user}  logout={doLogOut}/>}/>

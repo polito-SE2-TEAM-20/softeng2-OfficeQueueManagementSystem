@@ -28,3 +28,11 @@
 .hoverButton:hover {
     background-color: #228FF5;
 }
+
+.center {
+    margin: 0;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

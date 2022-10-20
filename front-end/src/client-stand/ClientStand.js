@@ -7,6 +7,7 @@ import { Howl, Howler } from 'howler'
 import { useEffect, useState } from 'react';
 import API from './API/api-client-stand'
 import Ticket from '../ticket/ticket';
+import { Alert } from 'react-bootstrap';
 
 class SoundPlayClass {
     SoundPlay = (src) => {
@@ -17,11 +18,14 @@ class SoundPlayClass {
 
 const ClientStand = () => {
     const [serviceTypes, setServiceTypes] = useState([{ code: "", name: "", expectedTimeSeconds: -1 }]);
+    const [newT, setNewT] = useState({ ticketInserted: { code: "", estimatedTime: "" } });
+    const [show, setShow] = useState(false);
 
     useEffect(() => {
         const getServiceTypes = async () => {
             const serviceTypesList = await API.getServiceTypes();
             setServiceTypes(serviceTypesList);
+            console.log(serviceTypesList);
         }
         getServiceTypes();
     }, [])
@@ -30,6 +34,18 @@ const ClientStand = () => {
     const audioClip = { sound: ClientSelection, name: "clientSelection.mp3" }
 
     useEffect(() => { Howler.volume(1.0) }, [])
+
+
+    function newTicket(code) {
+        API.issueNewTicket(code)
+            .then(newT => {
+                setNewT(newT);
+                setShow(true);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
 
     return (
         <Container fluid style={{ minHeight: "100vh", backgroundColor: "#31A861" }}>
@@ -42,7 +58,7 @@ const ClientStand = () => {
                 {
                     serviceTypes.sort((x, y) => x.code > y.code).map((service) => {
                         return (
-                            <Col className="button hoverButton" onClick={() => { API.issueNewTicket(service.code); soundPlayClass.SoundPlay(audioClip.sound) }}>
+                            <Col className="button hoverButton" onClick={() => { newTicket(service.code); soundPlayClass.SoundPlay(audioClip.sound); console.log(service.code) }}>
                                 <Row>
                                     {
                                         service.code == "A" ?
@@ -72,6 +88,13 @@ const ClientStand = () => {
                     })
                 }
             </Row>
+
+            {/*<Alert dismissible show={show} className="center" style={{ width: "fit-content" }} onClose={() => setShow(false)}>
+                {console.log(newT)}
+            </Alert>*/}
+
+            <Ticket newT={newT} show={show} setShow={setShow} />
+
         </Container>
     );
 }
