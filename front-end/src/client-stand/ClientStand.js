@@ -6,6 +6,7 @@ import ClientSelection from './sounds/clientSelection.mp3'
 import { Howl, Howler } from 'howler'
 import { useEffect, useState } from 'react';
 import API from './API/api-client-stand'
+import Ticket from '../ticket/ticket';
 
 class SoundPlayClass {
     SoundPlay = (src) => {

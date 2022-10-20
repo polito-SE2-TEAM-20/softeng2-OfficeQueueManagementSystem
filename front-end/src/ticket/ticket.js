@@ -4,7 +4,7 @@ import React, { Component } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Form, Button, Alert, Modal } from 'react-bootstrap';
 
-const Ticket = () => {
+const Ticket = (props) => {
     const navigate = useNavigate();
     return (
         <div class="container bootstrap snippets bootdeys">
