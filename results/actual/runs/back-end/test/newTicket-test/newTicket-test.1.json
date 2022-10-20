@@ -1,0 +1,13 @@
+[
+  {
+    "name": "newTicket-test",
+    "test": "newTicket-test",
+    "type": "request",
+    "start": "2022-10-16T19:50:04.725Z",
+    "end": "2022-10-16T19:50:04.732Z",
+    "result": {
+      "status": "Errored",
+      "message": "Request 'newTicket-test' ERRORED in 7 ms: input.split is not a function"
+    }
+  }
+]

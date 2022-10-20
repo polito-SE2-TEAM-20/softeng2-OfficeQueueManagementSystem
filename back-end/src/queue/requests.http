@@ -1,0 +1,50 @@
+//This test is used to insert a new ticket with updated
+//counter when a user get a ticket for a specified service
+//in this case service: "A"
+POST http://localhost:3500/queues/newTicket
+content-type: application/json
+
+{
+    "service": "A"
+}
+
+###
+//This test is used to retrieve last ticket 
+//for a specified service, in this case service: "A"
+POST http://localhost:3500/queues/lastTicket
+content-type: application/json
+
+{
+    "service": "B"
+}
+
+###
+//This test is used to retrieve next person 
+//in the queue for a specified counter
+POST http://localhost:3500/queues/nextInTheQueue
+content-type: application/json
+
+{
+    "counter": 4
+}
+
+
+###
+//This test is used to create a new counter
+POST http://localhost:3500/queues/newCounter
+content-type: application/json
+
+{
+    "name": "Counter 3"
+}
+
+
+###
+//This test is used to create a new counter
+POST http://localhost:3500/queues/assignServiceToCounter
+content-type: application/json
+
+{
+    "counterId": "6",
+    "serviceCode": "C"
+}
